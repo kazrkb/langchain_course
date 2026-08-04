@@ -6,6 +6,9 @@ langchain-core
 langchain-openai
 openai
 
+#groq
+langchain-groq
+
 # Google Gemini
 langchain-google-genai
 google-generativeai
