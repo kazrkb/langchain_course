@@ -1,11 +1,13 @@
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 import streamlit as st
+from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 import os
 
 load_dotenv()
 
 model = ChatGroq(model="openai/gpt-oss-20b")
+chat_history = []
 
 st.title("Chatbot with UI")
 
