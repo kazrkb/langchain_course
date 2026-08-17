@@ -1,0 +1,17 @@
+{
+    "name": null,
+    "input_variables": [
+        "length_input",
+        "paper_input",
+        "style_input"
+    ],
+    "optional_variables": [],
+    "output_parser": null,
+    "partial_variables": {},
+    "metadata": null,
+    "tags": null,
+    "template": " You are a research assistant. Your task is to summarize the following paper: {paper_input}.\n            The summary should be written in a {style_input} style and should be {length_input}",
+    "template_format": "f-string",
+    "validate_template": true,
+    "_type": "prompt"
+}

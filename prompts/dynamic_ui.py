@@ -1,7 +1,7 @@
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 import streamlit as st
-from langchain_core.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate, load_prompt
 
 
 load_dotenv()
@@ -29,13 +29,17 @@ length_input = st.selectbox(
     ["Short (1-2 paragraphs)", "Medium (3-5 paragraphs)", "Long (6-10 paragraphs)"]
 )
 
-template = PromptTemplate(
-    input_variables=["paper_input", "style_input", "length_input"],
-    template=(
-        """ You are a research assistant. Your task is to summarize the following paper: {paper_input}.
-            The summary should be written in a {style_input} style and should be {length_input}"""
-    )
-)
+# template = PromptTemplate(
+#     template=(
+#         """ You are a research assistant. Your task is to summarize the following paper: {paper_input}.
+#             The summary should be written in a {style_input} style and should be {length_input}"""
+#     ),
+#     input_variables=["paper_input", "style_input", "length_input"],
+#     validate_template=True
+# )
+template = load_prompt("prompts/dynamic_ui_template.json")
+
+template.save("prompts/dynamic_ui_template.json")
 
 if st.button("Click to get summary"):
     if paper_input and style_input and length_input:
@@ -48,3 +52,5 @@ if st.button("Click to get summary"):
         st.write(result.content)
     else:
         st.write("Please select a paper, style, and length for the summary.")
+        
+
